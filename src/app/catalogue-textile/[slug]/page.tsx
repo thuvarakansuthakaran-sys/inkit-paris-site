@@ -65,6 +65,33 @@ export default async function CatalogueItemPage({
         </div>
       </section>
 
+      {item.references && item.references.length > 0 && (
+        <section className="border-b border-line bg-paper-dark">
+          <div className="mx-auto max-w-6xl px-6 py-16">
+            <h2 className="font-serif text-2xl text-ink">
+              Exemples de références disponibles
+            </h2>
+            <p className="mt-3 max-w-2xl text-sm text-ink/60">
+              Une sélection resserrée pour se repérer entre les niveaux de gamme.
+              D&apos;autres marques et modèles sont disponibles sur demande.
+            </p>
+            <div className="mt-8 grid gap-6 sm:grid-cols-3">
+              {item.references.map((ref) => (
+                <div key={ref.model} className="border border-line bg-paper p-6">
+                  <span className="text-xs uppercase tracking-wide text-sand-dark">
+                    {ref.tier}
+                  </span>
+                  <h3 className="mt-2 font-serif text-lg text-ink">
+                    {ref.brand} — {ref.model}
+                  </h3>
+                  <p className="mt-2 text-sm text-ink/70">{ref.detail}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {isSizeGuide && (
         <section className="border-b border-line bg-paper-dark">
           <div className="mx-auto max-w-3xl px-6 py-16">
