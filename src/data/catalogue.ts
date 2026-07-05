@@ -3,6 +3,7 @@ export type ProductReference = {
   brand: string;
   model: string;
   detail: string;
+  image?: string;
 };
 
 export type CatalogueItem = {
@@ -11,6 +12,7 @@ export type CatalogueItem = {
   description: string;
   ctaLabel: string;
   imageIdea: string;
+  image?: string;
   references?: ProductReference[];
 };
 
@@ -22,24 +24,28 @@ export const catalogueItems: CatalogueItem[] = [
       "Une base incontournable pour vos équipes, vos événements ou vos opérations de communication, brodée ou imprimée selon vos besoins.",
     ctaLabel: "Voir les t-shirts personnalisables",
     imageIdea: "Pile de t-shirts unis pliés, gros plan sur le tissu coton",
+    image: "/images/catalogue/tshirt-fruit-of-the-loom-original-t.jpg",
     references: [
       {
         tier: "Entrée de gamme",
         brand: "Fruit of the Loom",
         model: "Original T",
         detail: "100% coton, col rond, environ 145 g/m² — la référence économique.",
+        image: "/images/catalogue/tshirt-fruit-of-the-loom-original-t.jpg",
       },
       {
         tier: "Milieu de gamme",
         brand: "B&C",
         model: "#E150",
         detail: "Coton 150 g/m², coupe classique, bonne base pour broderie et DTF.",
+        image: "/images/catalogue/tshirt-bc-e150.jpg",
       },
       {
         tier: "Premium / éco-responsable",
         brand: "B&C",
         model: "#Inspire E150",
         detail: "Coton biologique 150 g/m², même coupe que le #E150 avec un argument RSE.",
+        image: "/images/catalogue/tshirt-bc-inspire-e150.jpg",
       },
     ],
   },
@@ -50,24 +56,28 @@ export const catalogueItems: CatalogueItem[] = [
       "Le vêtement de référence pour une image professionnelle soignée, particulièrement adapté à la broderie de logo.",
     ctaLabel: "Voir les polos personnalisables",
     imageIdea: "Polo sur cintre, broderie logo en gros plan poitrine gauche",
+    image: "/images/catalogue/polo-hero.jpg",
     references: [
       {
         tier: "Entrée de gamme",
         brand: "Fruit of the Loom",
         model: "65/35 Polo",
         detail: "Polycoton 180 g/m², lavable à 60°, résistant pour un usage régulier.",
+        image: "/images/catalogue/polo-fruit-of-the-loom-65-35.jpg",
       },
       {
         tier: "Milieu de gamme",
         brand: "B&C",
         model: "My Polo 180",
         detail: "Coton piqué 180 g/m², coupe classique — best-seller du marquage textile.",
+        image: "/images/catalogue/polo-bc-my-polo-180.jpg",
       },
       {
         tier: "Premium",
         brand: "Tee Jays",
         model: "Luxury Stretch Polo",
         detail: "Coton biologique et stretch, finition soignée pour une image haut de gamme.",
+        image: "/images/catalogue/polo-tee-jays-luxury-stretch.jpg",
       },
     ],
   },
@@ -78,24 +88,28 @@ export const catalogueItems: CatalogueItem[] = [
       "Confort et visibilité pour vos équipes, en broderie ou impression DTF, toutes saisons.",
     ctaLabel: "Voir les sweats personnalisables",
     imageIdea: "Sweat à capuche plié, logo floqué au dos",
+    image: "/images/catalogue/sweat-hero.jpg",
     references: [
       {
         tier: "Entrée de gamme",
         brand: "Fruit of the Loom",
         model: "Classic Set-In Sweat",
         detail: "80/20, 280 g/m², manches droites — un sweat col rond solide et économique.",
+        image: "/images/catalogue/sweat-fruit-of-the-loom-classic.jpg",
       },
       {
         tier: "Milieu de gamme",
         brand: "B&C",
         model: "ID.222 Crew / ID.223 Hoodie",
         detail: "Sweat 50/50 unisexe, disponible en col rond ou à capuche.",
+        image: "/images/catalogue/sweat-bc-id222.jpg",
       },
       {
         tier: "Premium",
         brand: "Stedman",
         model: "Classic Hoodie",
         detail: "Gamme \"Better Basics\", conçue pour durer, disponibilité fiable en stock.",
+        image: "/images/catalogue/sweat-stedman-classic-hoodie.jpg",
       },
     ],
   },

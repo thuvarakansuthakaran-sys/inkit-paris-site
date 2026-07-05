@@ -1,5 +1,6 @@
 import Button from "@/components/Button";
 import PlaceholderImage from "@/components/PlaceholderImage";
+import CatalogueImage from "@/components/CatalogueImage";
 import FaqAccordion from "@/components/FaqAccordion";
 import QuoteForm from "@/components/QuoteForm";
 import { services } from "@/data/services";
@@ -209,7 +210,7 @@ export default function Home() {
                 href="/catalogue-textile"
                 className="group block border border-line"
               >
-                <PlaceholderImage ratio="landscape" label={item.imageIdea} />
+                <CatalogueImage src={item.image} ratio="landscape" alt={item.imageIdea} />
                 <div className="flex items-center justify-between p-4">
                   <span className="text-sm text-ink">{item.title}</span>
                   <span className="text-ink/40 transition-transform group-hover:translate-x-1">

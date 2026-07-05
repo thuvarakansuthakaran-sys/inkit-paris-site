@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Button from "@/components/Button";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import CatalogueImage from "@/components/CatalogueImage";
 import { catalogueItems } from "@/data/catalogue";
 
 type Params = { slug: string };
@@ -61,7 +61,7 @@ export default async function CatalogueItemPage({
               </div>
             )}
           </div>
-          <PlaceholderImage ratio="square" label={item.imageIdea} />
+          <CatalogueImage src={item.image} ratio="square" alt={item.imageIdea} />
         </div>
       </section>
 
@@ -77,14 +77,21 @@ export default async function CatalogueItemPage({
             </p>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               {item.references.map((ref) => (
-                <div key={ref.model} className="border border-line bg-paper p-6">
-                  <span className="text-xs uppercase tracking-wide text-sand-dark">
-                    {ref.tier}
-                  </span>
-                  <h3 className="mt-2 font-serif text-lg text-ink">
-                    {ref.brand} — {ref.model}
-                  </h3>
-                  <p className="mt-2 text-sm text-ink/70">{ref.detail}</p>
+                <div key={ref.model} className="border border-line bg-paper">
+                  <CatalogueImage
+                    src={ref.image}
+                    ratio="portrait"
+                    alt={`${ref.brand} ${ref.model}`}
+                  />
+                  <div className="p-6">
+                    <span className="text-xs uppercase tracking-wide text-sand-dark">
+                      {ref.tier}
+                    </span>
+                    <h3 className="mt-2 font-serif text-lg text-ink">
+                      {ref.brand} — {ref.model}
+                    </h3>
+                    <p className="mt-2 text-sm text-ink/70">{ref.detail}</p>
+                  </div>
                 </div>
               ))}
             </div>
@@ -137,7 +144,7 @@ export default async function CatalogueItemPage({
                 href={`/catalogue-textile/${other.slug}`}
                 className="group block border border-line"
               >
-                <PlaceholderImage ratio="landscape" label={other.imageIdea} />
+                <CatalogueImage src={other.image} ratio="landscape" alt={other.imageIdea} />
                 <div className="p-4">
                   <span className="text-sm text-ink group-hover:underline">
                     {other.title}

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Button from "@/components/Button";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import CatalogueImage from "@/components/CatalogueImage";
 import { catalogueItems } from "@/data/catalogue";
 
 export const metadata: Metadata = {
@@ -39,7 +39,7 @@ export default function CataloguePage() {
                 href={`/catalogue-textile/${item.slug}`}
                 className="group block border border-line"
               >
-                <PlaceholderImage ratio="landscape" label={item.imageIdea} />
+                <CatalogueImage src={item.image} ratio="landscape" alt={item.imageIdea} />
                 <div className="p-5">
                   <h2 className="font-serif text-lg text-ink">{item.title}</h2>
                   <p className="mt-2 text-sm leading-relaxed text-ink/70">
