@@ -97,3 +97,12 @@ export function ShirtIcon({ className }: IconProps) {
     </svg>
   );
 }
+
+export function BagIcon({ className }: IconProps) {
+  return (
+    <svg className={className} {...base}>
+      <path d="M6 8h12l-.9 12.1a1.5 1.5 0 0 1-1.5 1.4H8.4a1.5 1.5 0 0 1-1.5-1.4L6 8Z" />
+      <path d="M9 8V6.5a3 3 0 0 1 6 0V8" />
+    </svg>
+  );
+}

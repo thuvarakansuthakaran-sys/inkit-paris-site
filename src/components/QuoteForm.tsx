@@ -1,6 +1,7 @@
 "use client";
 
 import { FormEvent, useState } from "react";
+import { useCart } from "./CartContext";
 
 const clientTypes = [
   "Entreprise",
@@ -52,6 +53,7 @@ export default function QuoteForm({
   const [selectedTechniques, setSelectedTechniques] = useState<string[]>(
     initialTechniques.filter((t) => techniques.includes(t))
   );
+  const { items, removeItem, updateQuantity, clear } = useCart();
 
   function toggleTechnique(value: string) {
     setSelectedTechniques((prev) =>
@@ -66,6 +68,21 @@ export default function QuoteForm({
     const formData = new FormData(event.currentTarget);
     selectedTechniques.forEach((t) => formData.append("technique", t));
 
+    if (items.length > 0) {
+      formData.set("selection", JSON.stringify(items));
+      const summary = items
+        .map(
+          (item) =>
+            `- ${item.brand} ${item.model} (${item.categoryTitle}) — ${item.quantity} pièces — ${item.technique}`
+        )
+        .join("\n");
+      const existingMessage = (formData.get("message") as string) || "";
+      formData.set(
+        "message",
+        `Produits sélectionnés :\n${summary}${existingMessage ? "\n\n" + existingMessage : ""}`
+      );
+    }
+
     try {
       const response = await fetch("/api/devis", {
         method: "POST",
@@ -75,6 +92,7 @@ export default function QuoteForm({
       setStatus("success");
       event.currentTarget.reset();
       setSelectedTechniques([]);
+      clear();
     } catch {
       setStatus("error");
     }
@@ -96,11 +114,69 @@ export default function QuoteForm({
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-6 md:grid-cols-2">
-      {initialProduct && (
-        <div className="border border-line bg-paper-dark px-4 py-3 text-sm text-ink md:col-span-2">
-          Vous personnalisez : <span className="font-medium">{initialProduct}</span>
-          <input type="hidden" name="produit" value={initialProduct} />
+      {items.length > 0 ? (
+        <div className="border border-line bg-paper-dark p-4 md:col-span-2">
+          <div className="flex items-center justify-between">
+            <h3 className="font-serif text-lg text-ink">
+              Votre sélection ({items.length})
+            </h3>
+            <button
+              type="button"
+              onClick={clear}
+              className="text-xs text-ink/50 underline underline-offset-4 hover:text-ink"
+            >
+              Vider la sélection
+            </button>
+          </div>
+          <ul className="mt-4 space-y-3">
+            {items.map((item) => (
+              <li
+                key={item.id}
+                className="flex items-center gap-3 border-t border-line pt-3 first:border-t-0 first:pt-0"
+              >
+                {item.image && (
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={item.image}
+                    alt=""
+                    className="h-14 w-14 flex-shrink-0 object-cover"
+                  />
+                )}
+                <div className="flex-1">
+                  <p className="text-sm text-ink">
+                    {item.brand} — {item.model}
+                  </p>
+                  <p className="text-xs text-ink/50">
+                    {item.categoryTitle} · {item.technique}
+                  </p>
+                </div>
+                <input
+                  type="number"
+                  min={1}
+                  value={item.quantity}
+                  onChange={(e) => updateQuantity(item.id, Number(e.target.value))}
+                  className="w-20 border border-line bg-paper px-2 py-1.5 text-sm text-ink"
+                  aria-label={`Quantité pour ${item.brand} ${item.model}`}
+                />
+                <button
+                  type="button"
+                  onClick={() => removeItem(item.id)}
+                  className="px-1 text-ink/40 hover:text-ink"
+                  aria-label={`Retirer ${item.brand} ${item.model}`}
+                >
+                  ✕
+                </button>
+              </li>
+            ))}
+          </ul>
         </div>
+      ) : (
+        initialProduct && (
+          <div className="border border-line bg-paper-dark px-4 py-3 text-sm text-ink md:col-span-2">
+            Vous personnalisez : <span className="font-medium">{initialProduct}</span>
+            <input type="hidden" name="produit" value={initialProduct} />
+          </div>
+        )
       )}
 
       <div>

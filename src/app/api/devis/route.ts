@@ -8,8 +8,10 @@ export async function POST(request: NextRequest) {
   const formData = await request.formData();
 
   const file = formData.get("file");
+  const selectionRaw = formData.get("selection");
   const summary = {
     produit: formData.get("produit"),
+    selection: typeof selectionRaw === "string" ? JSON.parse(selectionRaw) : null,
     name: formData.get("name"),
     company: formData.get("company"),
     email: formData.get("email"),

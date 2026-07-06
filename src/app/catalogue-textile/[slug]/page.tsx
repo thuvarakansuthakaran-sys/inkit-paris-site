@@ -2,30 +2,10 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Button from "@/components/Button";
 import CatalogueImage from "@/components/CatalogueImage";
+import AddToSelectionButton from "@/components/AddToSelectionButton";
 import { catalogueItems } from "@/data/catalogue";
 
 type Params = { slug: string };
-
-const textileTypeBySlug: Record<string, string> = {
-  "t-shirts-personnalises": "T-shirt",
-  "polos-personnalises": "Polo",
-  "sweats-hoodies": "Sweat",
-  "vestes-softshells": "Veste",
-  "vetements-de-travail": "Vêtement de travail",
-  "casquettes-bonnets": "Casquette",
-};
-
-function devisHref(
-  categorySlug: string,
-  ref: { brand: string; model: string; techniques: string[] }
-) {
-  const params = new URLSearchParams();
-  params.set("produit", `${ref.brand} ${ref.model}`);
-  const textileType = textileTypeBySlug[categorySlug];
-  if (textileType) params.set("textile", textileType);
-  ref.techniques.forEach((technique) => params.append("technique", technique));
-  return `/devis?${params.toString()}`;
-}
 
 const sizeGuide = [
   { size: "S", chest: "88 - 96 cm" },
@@ -125,13 +105,14 @@ export default async function CatalogueItemPage({
                         </span>
                       ))}
                     </div>
-                    <Button
-                      href={devisHref(item.slug, ref)}
-                      variant="ghost"
-                      className="mt-4 justify-start px-0 py-0 normal-case tracking-normal"
-                    >
-                      Personnaliser ce produit →
-                    </Button>
+                    <AddToSelectionButton
+                      id={`${item.slug}-${ref.brand}-${ref.model}`}
+                      categoryTitle={item.title}
+                      brand={ref.brand}
+                      model={ref.model}
+                      technique={ref.techniques[0]}
+                      image={ref.image}
+                    />
                   </div>
                 </div>
               ))}
