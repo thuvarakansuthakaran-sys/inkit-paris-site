@@ -9,6 +9,7 @@ export type Service = {
   advantages: string[];
   fabricsTitle: string;
   fabrics: string[];
+  image: string;
 };
 
 export const services: Service[] = [
@@ -31,6 +32,7 @@ export const services: Service[] = [
     ],
     fabricsTitle: "Sur quels textiles ?",
     fabrics: ["Polos", "Vestes et softshells", "Casquettes", "Vêtements de travail"],
+    image: "/images/catalogue/polo-fruit-of-the-loom-65-35.jpg",
   },
   {
     slug: "impression-dtf",
@@ -51,6 +53,7 @@ export const services: Service[] = [
     ],
     fabricsTitle: "Sur quels textiles ?",
     fabrics: ["T-shirts", "Sweats et hoodies", "Textile sport", "Textile enfant"],
+    image: "/images/catalogue/tshirt-bc-e150.jpg",
   },
   {
     slug: "flocage-textile",
@@ -71,6 +74,7 @@ export const services: Service[] = [
     ],
     fabricsTitle: "Sur quels textiles ?",
     fabrics: ["Vêtements de travail", "Haute visibilité", "Textile sport", "Textile événementiel"],
+    image: "/images/catalogue/hautevis-yoko-gilet.jpg",
   },
   {
     slug: "conseil-accompagnement",
@@ -96,6 +100,7 @@ export const services: Service[] = [
       "Rendu visuel recherché",
       "Délai de livraison souhaité",
     ],
+    image: "/images/catalogue/veste-pen-duick-atlantic.jpg",
   },
 ];
 

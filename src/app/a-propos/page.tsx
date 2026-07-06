@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Button from "@/components/Button";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import CatalogueImage from "@/components/CatalogueImage";
 
 export const metadata: Metadata = {
   title: "À Propos d'Inkit Paris | Spécialiste Textile Personnalisé B2B",
@@ -46,9 +46,10 @@ export default function AProposPage() {
               technique, pour un rendu qui valorise réellement votre image de marque.
             </p>
           </div>
-          <PlaceholderImage
+          <CatalogueImage
+            src="/images/catalogue/sweat-hero.jpg"
             ratio="square"
-            label="Équipe ou atelier Inkit Paris en activité"
+            alt="Univers de la personnalisation textile Inkit Paris"
           />
         </div>
       </section>

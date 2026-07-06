@@ -29,7 +29,13 @@ export default function CatalogueImage({
 
   return (
     <div className={`relative overflow-hidden ${ratios[ratio]} ${className}`}>
-      <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
+      <Image
+        src={src}
+        alt={alt}
+        fill
+        sizes={sizes}
+        className="object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+      />
     </div>
   );
 }

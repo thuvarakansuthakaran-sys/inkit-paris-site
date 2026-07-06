@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Button from "@/components/Button";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import CatalogueImage from "@/components/CatalogueImage";
 import { services, getServiceBySlug } from "@/data/services";
 
 type Params = { slug: string };
@@ -50,9 +50,10 @@ export default async function ServiceDetailPage({
               </Button>
             </div>
           </div>
-          <PlaceholderImage
+          <CatalogueImage
+            src={service.image}
             ratio="square"
-            label={`${service.title} — vêtement personnalisé en gros plan`}
+            alt={`${service.title} — vêtement personnalisé en gros plan`}
           />
         </div>
       </section>

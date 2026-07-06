@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import Button from "@/components/Button";
-import PlaceholderImage from "@/components/PlaceholderImage";
+import CatalogueImage from "@/components/CatalogueImage";
 
 export const metadata: Metadata = {
   title: "Nos Réalisations en Personnalisation Textile",
@@ -9,12 +9,30 @@ export const metadata: Metadata = {
 };
 
 const placeholderProjects = [
-  "Polos brodés pour une équipe commerciale",
-  "Sweats personnalisés pour une association",
-  "Maillots floqués pour un club sportif",
-  "Vestes softshell pour une équipe technique",
-  "T-shirts DTF pour un événement d'entreprise",
-  "Casquettes brodées pour une collectivité",
+  {
+    label: "Polos brodés pour une équipe commerciale",
+    image: "/images/catalogue/polo-fruit-of-the-loom-65-35.jpg",
+  },
+  {
+    label: "Sweats personnalisés pour une association",
+    image: "/images/catalogue/sweat-bc-id222.jpg",
+  },
+  {
+    label: "Maillots floqués pour un club sportif",
+    image: "/images/catalogue/sport-justcool-tee.jpg",
+  },
+  {
+    label: "Vestes softshell pour une équipe technique",
+    image: "/images/catalogue/veste-regatta-craghoppers.jpg",
+  },
+  {
+    label: "T-shirts DTF pour un événement d'entreprise",
+    image: "/images/catalogue/tshirt-fruit-of-the-loom-original-t.jpg",
+  },
+  {
+    label: "Casquettes brodées pour une collectivité",
+    image: "/images/catalogue/casquette-beechfield-original.jpg",
+  },
 ];
 
 export default function RealisationsPage() {
@@ -35,9 +53,9 @@ export default function RealisationsPage() {
         <div className="mx-auto max-w-6xl px-6 py-16">
           <div className="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
             {placeholderProjects.map((project) => (
-              <div key={project} className="border border-line">
-                <PlaceholderImage ratio="landscape" label={project} />
-                <p className="p-4 text-sm text-ink/70">{project}</p>
+              <div key={project.label} className="group border border-line transition-shadow hover:shadow-md">
+                <CatalogueImage src={project.image} ratio="landscape" alt={project.label} />
+                <p className="p-4 text-sm text-ink/70">{project.label}</p>
               </div>
             ))}
           </div>

@@ -37,9 +37,21 @@ const labelClasses = "mb-2 block text-sm font-medium text-ink";
 
 type Status = "idle" | "submitting" | "success" | "error";
 
-export default function QuoteForm() {
+type QuoteFormProps = {
+  initialProduct?: string;
+  initialTextileType?: string;
+  initialTechniques?: string[];
+};
+
+export default function QuoteForm({
+  initialProduct,
+  initialTextileType,
+  initialTechniques = [],
+}: QuoteFormProps) {
   const [status, setStatus] = useState<Status>("idle");
-  const [selectedTechniques, setSelectedTechniques] = useState<string[]>([]);
+  const [selectedTechniques, setSelectedTechniques] = useState<string[]>(
+    initialTechniques.filter((t) => techniques.includes(t))
+  );
 
   function toggleTechnique(value: string) {
     setSelectedTechniques((prev) =>
@@ -84,6 +96,13 @@ export default function QuoteForm() {
 
   return (
     <form onSubmit={handleSubmit} className="grid gap-6 md:grid-cols-2">
+      {initialProduct && (
+        <div className="border border-line bg-paper-dark px-4 py-3 text-sm text-ink md:col-span-2">
+          Vous personnalisez : <span className="font-medium">{initialProduct}</span>
+          <input type="hidden" name="produit" value={initialProduct} />
+        </div>
+      )}
+
       <div>
         <label className={labelClasses} htmlFor="name">
           Nom et prénom *
@@ -135,7 +154,12 @@ export default function QuoteForm() {
         <label className={labelClasses} htmlFor="textileType">
           Type de textile souhaité
         </label>
-        <select className={inputClasses} id="textileType" name="textileType">
+        <select
+          className={inputClasses}
+          id="textileType"
+          name="textileType"
+          defaultValue={initialTextileType ?? textileTypes[0]}
+        >
           {textileTypes.map((type) => (
             <option key={type} value={type}>
               {type}

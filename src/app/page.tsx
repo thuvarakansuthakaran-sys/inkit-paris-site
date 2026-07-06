@@ -1,32 +1,54 @@
 import Button from "@/components/Button";
-import PlaceholderImage from "@/components/PlaceholderImage";
 import CatalogueImage from "@/components/CatalogueImage";
 import FaqAccordion from "@/components/FaqAccordion";
 import QuoteForm from "@/components/QuoteForm";
 import { services } from "@/data/services";
 import { catalogueItems, homepageCatalogueSlugs } from "@/data/catalogue";
 import { faqEntries } from "@/data/faq";
+import {
+  CheckCircleIcon,
+  MessageIcon,
+  ClockIcon,
+  ShirtIcon,
+  NeedleIcon,
+  DropletIcon,
+  LayersIcon,
+  CompassIcon,
+  BriefcaseIcon,
+  RouteIcon,
+} from "@/components/icons";
+
+const serviceIcons: Record<string, typeof NeedleIcon> = {
+  "broderie-textile": NeedleIcon,
+  "impression-dtf": DropletIcon,
+  "flocage-textile": LayersIcon,
+  "conseil-accompagnement": CompassIcon,
+};
 
 const valueProps = [
   {
     title: "Finitions soignées",
     description:
       "Chaque pièce est contrôlée avant expédition, pour un rendu professionnel durable.",
+    icon: CheckCircleIcon,
   },
   {
     title: "Conseil personnalisé",
     description:
       "Nous vous orientons vers le textile et la technique adaptés à votre usage et votre budget.",
+    icon: MessageIcon,
   },
   {
     title: "Délais maîtrisés",
     description:
       "Un accompagnement clair, de la validation de la maquette à la livraison.",
+    icon: ClockIcon,
   },
   {
     title: "Large choix textile corporate",
     description:
       "Un catalogue pensé pour l'univers professionnel, du t-shirt au vêtement de travail.",
+    icon: ShirtIcon,
   },
 ];
 
@@ -35,30 +57,36 @@ const differentiators = [
     title: "Expertise B2B",
     description:
       "Nous travaillons exclusivement avec des entreprises, associations, collectivités et clubs sportifs.",
+    icon: BriefcaseIcon,
   },
   {
     title: "Conseil avant tout",
     description:
       "Nous vous aidons à choisir le bon textile et la bonne technique, pas seulement à imprimer un logo.",
+    icon: MessageIcon,
   },
   {
     title: "Trois techniques maîtrisées",
     description:
       "Broderie, impression DTF et flocage réalisés selon vos besoins, sans sous-traitance en cascade.",
+    icon: LayersIcon,
   },
   {
     title: "Qualité contrôlée",
     description: "Chaque commande est vérifiée avant expédition.",
+    icon: CheckCircleIcon,
   },
   {
     title: "Réactivité",
     description:
       "Une équipe disponible pour répondre rapidement à vos demandes de devis.",
+    icon: ClockIcon,
   },
   {
     title: "Accompagnement de bout en bout",
     description:
       "Du fichier logo jusqu'au vêtement fini, nous gérons chaque étape du projet.",
+    icon: RouteIcon,
   },
 ];
 
@@ -116,10 +144,17 @@ export default function Home() {
               Réponse sous 24 à 48h · Devis gratuit et sans engagement
             </p>
           </div>
-          <PlaceholderImage
-            ratio="square"
-            label="Broderie en cours de réalisation, gros plan fil et aiguille sur un polo"
-          />
+          <div className="relative">
+            <CatalogueImage
+              src="/images/catalogue/polo-fruit-of-the-loom-65-35.jpg"
+              ratio="square"
+              alt="Polo brodé avec logo personnalisé"
+            />
+            <div className="absolute -bottom-6 -left-6 hidden border border-line bg-paper px-5 py-4 shadow-lg sm:block">
+              <p className="font-serif text-2xl text-ink">500+</p>
+              <p className="text-xs text-ink/60">projets textiles réalisés</p>
+            </div>
+          </div>
         </div>
       </section>
 
@@ -147,7 +182,8 @@ export default function Home() {
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-4">
             {valueProps.map((item) => (
               <div key={item.title} className="border-t border-ink pt-4">
-                <h3 className="font-serif text-lg text-ink">{item.title}</h3>
+                <item.icon className="h-6 w-6 text-sand-dark" />
+                <h3 className="mt-3 font-serif text-lg text-ink">{item.title}</h3>
                 <p className="mt-2 text-sm text-ink/70">{item.description}</p>
               </div>
             ))}
@@ -167,13 +203,18 @@ export default function Home() {
             complémentaires pour répondre précisément à votre besoin.
           </p>
           <div className="mt-12 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-            {services.map((service) => (
+            {services.map((service) => {
+              const Icon = serviceIcons[service.slug] ?? NeedleIcon;
+              return (
               <div
                 key={service.slug}
-                className="flex flex-col justify-between border border-line bg-paper p-6"
+                className="flex flex-col justify-between border border-line bg-paper p-6 transition-shadow hover:shadow-md"
               >
                 <div>
-                  <h3 className="font-serif text-xl text-ink">{service.title}</h3>
+                  <span className="flex h-11 w-11 items-center justify-center border border-line">
+                    <Icon className="h-5 w-5 text-ink" />
+                  </span>
+                  <h3 className="mt-4 font-serif text-xl text-ink">{service.title}</h3>
                   <p className="mt-3 text-sm leading-relaxed text-ink/70">
                     {service.shortDescription}
                   </p>
@@ -186,7 +227,8 @@ export default function Home() {
                   {service.ctaLabel} →
                 </Button>
               </div>
-            ))}
+              );
+            })}
           </div>
         </div>
       </section>
@@ -207,8 +249,8 @@ export default function Home() {
             {homeCatalogue.map((item) => (
               <a
                 key={item.slug}
-                href="/catalogue-textile"
-                className="group block border border-line"
+                href={`/catalogue-textile/${item.slug}`}
+                className="group block border border-line transition-shadow hover:shadow-md"
               >
                 <CatalogueImage src={item.image} ratio="landscape" alt={item.imageIdea} />
                 <div className="flex items-center justify-between p-4">
@@ -237,7 +279,8 @@ export default function Home() {
           <div className="mt-12 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {differentiators.map((item) => (
               <div key={item.title} className="border-t border-paper/20 pt-4">
-                <h3 className="font-serif text-lg">{item.title}</h3>
+                <item.icon className="h-6 w-6 text-paper/70" />
+                <h3 className="mt-3 font-serif text-lg">{item.title}</h3>
                 <p className="mt-2 text-sm text-paper/70">{item.description}</p>
               </div>
             ))}

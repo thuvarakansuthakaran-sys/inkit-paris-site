@@ -4,6 +4,7 @@ export type ProductReference = {
   model: string;
   detail: string;
   image?: string;
+  techniques: string[];
 };
 
 export type CatalogueItem = {
@@ -32,6 +33,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Original T",
         detail: "100% coton, col rond, environ 145 g/m² — la référence économique.",
         image: "/images/catalogue/tshirt-fruit-of-the-loom-original-t.jpg",
+        techniques: ["Impression DTF", "Broderie"],
       },
       {
         tier: "Milieu de gamme",
@@ -39,6 +41,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "#E150",
         detail: "Coton 150 g/m², coupe classique, bonne base pour broderie et DTF.",
         image: "/images/catalogue/tshirt-bc-e150.jpg",
+        techniques: ["Broderie", "Impression DTF"],
       },
       {
         tier: "Premium / éco-responsable",
@@ -46,6 +49,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "#Inspire E150",
         detail: "Coton biologique 150 g/m², même coupe que le #E150 avec un argument RSE.",
         image: "/images/catalogue/tshirt-bc-inspire-e150.jpg",
+        techniques: ["Impression DTF", "Broderie"],
       },
     ],
   },
@@ -64,6 +68,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "65/35 Polo",
         detail: "Polycoton 180 g/m², lavable à 60°, résistant pour un usage régulier.",
         image: "/images/catalogue/polo-fruit-of-the-loom-65-35.jpg",
+        techniques: ["Broderie"],
       },
       {
         tier: "Milieu de gamme",
@@ -71,6 +76,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "My Polo 180",
         detail: "Coton piqué 180 g/m², coupe classique — best-seller du marquage textile.",
         image: "/images/catalogue/polo-bc-my-polo-180.jpg",
+        techniques: ["Broderie"],
       },
       {
         tier: "Premium",
@@ -78,6 +84,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Luxury Stretch Polo",
         detail: "Coton biologique et stretch, finition soignée pour une image haut de gamme.",
         image: "/images/catalogue/polo-tee-jays-luxury-stretch.jpg",
+        techniques: ["Broderie"],
       },
     ],
   },
@@ -96,6 +103,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Classic Set-In Sweat",
         detail: "80/20, 280 g/m², manches droites — un sweat col rond solide et économique.",
         image: "/images/catalogue/sweat-fruit-of-the-loom-classic.jpg",
+        techniques: ["Broderie", "Flocage"],
       },
       {
         tier: "Milieu de gamme",
@@ -103,6 +111,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "ID.222 Crew / ID.223 Hoodie",
         detail: "Sweat 50/50 unisexe, disponible en col rond ou à capuche.",
         image: "/images/catalogue/sweat-bc-id222.jpg",
+        techniques: ["Broderie", "Flocage", "Impression DTF"],
       },
       {
         tier: "Premium",
@@ -110,6 +119,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Classic Hoodie",
         detail: "Gamme \"Better Basics\", conçue pour durer, disponibilité fiable en stock.",
         image: "/images/catalogue/sweat-stedman-classic-hoodie.jpg",
+        techniques: ["Broderie", "Flocage"],
       },
     ],
   },
@@ -128,6 +138,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Softshell Jacket 3 couches",
         detail: "Veste softshell essentiel, coupe unisexe, bon compromis prix/technicité.",
         image: "/images/catalogue/veste-result-softshell.jpg",
+        techniques: ["Broderie", "Flocage"],
       },
       {
         tier: "Milieu de gamme",
@@ -135,6 +146,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Basecamp Softshell Jacket",
         detail: "Veste softshell technique, robuste, pensée pour un usage extérieur régulier.",
         image: "/images/catalogue/veste-regatta-craghoppers.jpg",
+        techniques: ["Broderie", "Flocage"],
       },
       {
         tier: "Premium",
@@ -142,6 +154,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Atlantic (2 ou 3 couches)",
         detail: "Softshell française haut de gamme, alliant technicité et allure soignée.",
         image: "/images/catalogue/veste-pen-duick-atlantic.jpg",
+        techniques: ["Broderie"],
       },
     ],
   },
@@ -160,6 +173,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Lite Coverall",
         detail: "Combinaison de travail légère, économique, pour un usage quotidien.",
         image: "/images/catalogue/travail-result-lite-coverall.jpg",
+        techniques: ["Flocage", "Broderie"],
       },
       {
         tier: "Milieu de gamme",
@@ -167,6 +181,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Persia",
         detail: "Veste de travail robuste multi-poches, référence chez les professionnels du terrain.",
         image: "/images/catalogue/travail-herock-persia.jpg",
+        techniques: ["Broderie", "Flocage"],
       },
       {
         tier: "Premium",
@@ -174,6 +189,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Poseidon",
         detail: "Veste softshell technique à capuche, pensée pour les conditions exigeantes.",
         image: "/images/catalogue/travail-herock-poseidon.jpg",
+        techniques: ["Broderie", "Flocage"],
       },
     ],
   },
@@ -192,6 +208,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Hi-Vis 2 Band Waistcoat",
         detail: "Gilet de sécurité classique à bandes réfléchissantes, la base incontournable.",
         image: "/images/catalogue/hautevis-yoko-gilet.jpg",
+        techniques: ["Flocage"],
       },
       {
         tier: "Milieu de gamme",
@@ -199,6 +216,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Safety Vest « Hannover »",
         detail: "Gilet de sécurité normé, confortable, adapté à un usage régulier.",
         image: "/images/catalogue/hautevis-korntex-hannover.jpg",
+        techniques: ["Flocage"],
       },
       {
         tier: "Premium",
@@ -206,6 +224,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Premium Multifun. Vest « Munich »",
         detail: "Gilet multipoches haute visibilité, pensé pour les métiers techniques.",
         image: "/images/catalogue/hautevis-korntex-munich.jpg",
+        techniques: ["Flocage", "Broderie"],
       },
     ],
   },
@@ -224,6 +243,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Original 5 Panel Cap",
         detail: "La casquette 5 pans la plus vendue, idéale pour la broderie de logo.",
         image: "/images/catalogue/casquette-beechfield-original.jpg",
+        techniques: ["Broderie"],
       },
       {
         tier: "Milieu de gamme",
@@ -231,6 +251,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Liberty Five / Start Five",
         detail: "Casquette baseball de qualité supérieure, large choix de coloris.",
         image: "/images/catalogue/casquette-atlantis-headwear.jpg",
+        techniques: ["Broderie"],
       },
       {
         tier: "Premium",
@@ -238,6 +259,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Wooly Combed",
         detail: "La référence des casquettes ajustées, coupe et finition premium.",
         image: "/images/catalogue/casquette-flexfit-wooly.jpg",
+        techniques: ["Broderie"],
       },
     ],
   },
@@ -256,6 +278,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Minimal Lifestyle Tote",
         detail: "Sac fourre-tout minimaliste, idéal pour un cadeau d'entreprise ou un événement.",
         image: "/images/catalogue/bagagerie-bagbase-tote.jpg",
+        techniques: ["Broderie", "Impression DTF"],
       },
       {
         tier: "Milieu de gamme",
@@ -263,6 +286,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Stockholm Laptop Backpack",
         detail: "Sac à dos professionnel avec compartiment ordinateur, look soigné.",
         image: "/images/catalogue/bagagerie-quadra-stockholm.jpg",
+        techniques: ["Broderie"],
       },
       {
         tier: "Premium",
@@ -270,6 +294,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Tungsten Business Traveller",
         detail: "Valise cabine à roulettes, gamme voyage haut de gamme pour vos équipes.",
         image: "/images/catalogue/bagagerie-quadra-tungsten.jpg",
+        techniques: ["Broderie"],
       },
     ],
   },
@@ -288,6 +313,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Kid Unisex T-Shirt",
         detail: "T-shirt enfant 155 g/m², coupe unisexe, toutes tailles.",
         image: "/images/catalogue/enfant-jhk-tshirt.jpg",
+        techniques: ["Impression DTF", "Flocage"],
       },
       {
         tier: "Milieu de gamme",
@@ -295,6 +321,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Sweatshirt Kid",
         detail: "Sweat col rond enfant, confortable pour un usage quotidien ou événementiel.",
         image: "/images/catalogue/enfant-jhk-sweatshirt.jpg",
+        techniques: ["Flocage", "Broderie"],
       },
       {
         tier: "Premium",
@@ -302,6 +329,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Gamme molleton enfant",
         detail: "Sweat et ensembles molletonnés doux, finitions soignées pour les tout-petits.",
         image: "/images/catalogue/enfant-larkwood-fleece.jpg",
+        techniques: ["Broderie"],
       },
     ],
   },
@@ -320,6 +348,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Cool T (Neoteric™)",
         detail: "Tee-shirt technique respirant, idéal pour l'entraînement et les événements sportifs.",
         image: "/images/catalogue/sport-justcool-tee.jpg",
+        techniques: ["Impression DTF", "Flocage"],
       },
       {
         tier: "Milieu de gamme",
@@ -327,6 +356,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "1/4 Zip Technical Top",
         detail: "Haut technique col zippé, parfait pour les clubs et équipes en toute saison.",
         image: "/images/catalogue/sport-tombo-zip-top.jpg",
+        techniques: ["Impression DTF", "Flocage"],
       },
       {
         tier: "Premium",
@@ -334,6 +364,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Luxury Sport Polo",
         detail: "Polo de sport haut de gamme, pour une image soignée hors terrain.",
         image: "/images/catalogue/sport-teejays-polo.jpg",
+        techniques: ["Broderie"],
       },
     ],
   },
@@ -352,6 +383,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Serviette invité / visage",
         detail: "Petite serviette éponge personnalisable, idéale en cadeau d'accueil.",
         image: "/images/catalogue/goodies-towelcity-hand.jpg",
+        techniques: ["Broderie"],
       },
       {
         tier: "Milieu de gamme",
@@ -359,6 +391,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Gamme Sport / Bain",
         detail: "Serviettes éponge de qualité, plusieurs coloris, pour le sport ou le quotidien.",
         image: "/images/catalogue/goodies-towelcity-sport.jpg",
+        techniques: ["Broderie"],
       },
       {
         tier: "Premium",
@@ -366,6 +399,7 @@ export const catalogueItems: CatalogueItem[] = [
         model: "Fouta Hamam Sultan",
         detail: "Serviette-fouta légère et élégante, un goodie premium qui sort de l'ordinaire.",
         image: "/images/catalogue/goodies-hamam-sultan.jpg",
+        techniques: ["Broderie"],
       },
     ],
   },

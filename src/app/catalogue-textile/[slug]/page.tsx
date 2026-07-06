@@ -6,6 +6,27 @@ import { catalogueItems } from "@/data/catalogue";
 
 type Params = { slug: string };
 
+const textileTypeBySlug: Record<string, string> = {
+  "t-shirts-personnalises": "T-shirt",
+  "polos-personnalises": "Polo",
+  "sweats-hoodies": "Sweat",
+  "vestes-softshells": "Veste",
+  "vetements-de-travail": "Vêtement de travail",
+  "casquettes-bonnets": "Casquette",
+};
+
+function devisHref(
+  categorySlug: string,
+  ref: { brand: string; model: string; techniques: string[] }
+) {
+  const params = new URLSearchParams();
+  params.set("produit", `${ref.brand} ${ref.model}`);
+  const textileType = textileTypeBySlug[categorySlug];
+  if (textileType) params.set("textile", textileType);
+  ref.techniques.forEach((technique) => params.append("technique", technique));
+  return `/devis?${params.toString()}`;
+}
+
 const sizeGuide = [
   { size: "S", chest: "88 - 96 cm" },
   { size: "M", chest: "96 - 104 cm" },
@@ -77,7 +98,10 @@ export default async function CatalogueItemPage({
             </p>
             <div className="mt-8 grid gap-6 sm:grid-cols-3">
               {item.references.map((ref) => (
-                <div key={ref.model} className="border border-line bg-paper">
+                <div
+                  key={ref.model}
+                  className="group border border-line bg-paper transition-shadow hover:shadow-md"
+                >
                   <CatalogueImage
                     src={ref.image}
                     ratio="portrait"
@@ -91,6 +115,23 @@ export default async function CatalogueItemPage({
                       {ref.brand} — {ref.model}
                     </h3>
                     <p className="mt-2 text-sm text-ink/70">{ref.detail}</p>
+                    <div className="mt-4 flex flex-wrap gap-2">
+                      {ref.techniques.map((technique) => (
+                        <span
+                          key={technique}
+                          className="border border-line px-2 py-1 text-xs text-ink/70"
+                        >
+                          {technique}
+                        </span>
+                      ))}
+                    </div>
+                    <Button
+                      href={devisHref(item.slug, ref)}
+                      variant="ghost"
+                      className="mt-4 justify-start px-0 py-0 normal-case tracking-normal"
+                    >
+                      Personnaliser ce produit →
+                    </Button>
                   </div>
                 </div>
               ))}

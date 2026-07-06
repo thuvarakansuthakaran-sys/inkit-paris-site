@@ -37,7 +37,7 @@ export default function CataloguePage() {
               <a
                 key={item.slug}
                 href={`/catalogue-textile/${item.slug}`}
-                className="group block border border-line"
+                className="group block border border-line transition-shadow hover:shadow-md"
               >
                 <CatalogueImage src={item.image} ratio="landscape" alt={item.imageIdea} />
                 <div className="p-5">

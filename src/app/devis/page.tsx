@@ -7,7 +7,20 @@ export const metadata: Metadata = {
     "Décrivez votre projet de personnalisation textile et recevez un devis adapté à votre entreprise sous 24 à 48h.",
 };
 
-export default function DevisPage() {
+type SearchParams = { produit?: string; textile?: string; technique?: string | string[] };
+
+export default async function DevisPage({
+  searchParams,
+}: {
+  searchParams: Promise<SearchParams>;
+}) {
+  const params = await searchParams;
+  const initialTechniques = params.technique
+    ? Array.isArray(params.technique)
+      ? params.technique
+      : [params.technique]
+    : [];
+
   return (
     <section className="border-b border-line">
       <div className="mx-auto max-w-4xl px-6 py-16">
@@ -20,7 +33,11 @@ export default function DevisPage() {
           devis adapté à votre besoin.
         </p>
         <div className="mt-10">
-          <QuoteForm />
+          <QuoteForm
+            initialProduct={params.produit}
+            initialTextileType={params.textile}
+            initialTechniques={initialTechniques}
+          />
         </div>
       </div>
     </section>

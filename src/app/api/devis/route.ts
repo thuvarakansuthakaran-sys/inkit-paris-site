@@ -9,6 +9,7 @@ export async function POST(request: NextRequest) {
 
   const file = formData.get("file");
   const summary = {
+    produit: formData.get("produit"),
     name: formData.get("name"),
     company: formData.get("company"),
     email: formData.get("email"),
